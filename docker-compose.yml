@@ -1,0 +1,41 @@
+version: '2'
+services:
+  web:
+    image: fpfis/httpd-php-dev:7.3
+    container_name: web
+    working_dir: /var/www/html
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/var/www/html
+    env_file:
+      - .env
+  mysql:
+    image: percona/percona-server:8.0
+    container_name: mysql
+    command: --init-file /data/application/init.sql --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./data/db/init.sql:/data/application/init.sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+      - MYSQL_USER=$MYSQL_USER
+      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+      - MYSQL_PORT=$MYSQL_PORT
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: $MYSQL_HOSTNAME
+      PMA_USER: $MYSQL_USER
+      PMA_PASSWORD: $MYSQL_PASSWORD
+      PHP_UPLOAD_MAX_FILESIZE: 1G
+      PHP_MAX_INPUT_VARS: 10000
+    ports:
+    - 8090:80
+    links:
+    - mysql

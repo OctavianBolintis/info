@@ -1,0 +1,6 @@
+harta.homepage:
+  title: 'Atracții Turistice'
+  parent: system.main
+  route_name: 'harta.homepage'
+  menu_name: main
+  weight: 100

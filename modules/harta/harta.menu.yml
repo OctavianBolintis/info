@@ -1,0 +1,5 @@
+harta.homepage:
+  title: 'Atracții Turistice'
+  weight: 200
+  url: 'internal:/news'
+  menu_name: main

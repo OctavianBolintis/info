@@ -1,0 +1,8 @@
+type: module
+name: 'Harta Interactiva Romania'
+description: 'Contine dezvoltari pentru integrarea hartii interactive a Romaniei'
+package: Andrei
+core_version_requirement: ^8
+php: ^7.4
+libraries:
+  - harta/harta_css

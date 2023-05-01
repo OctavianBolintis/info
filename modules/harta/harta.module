@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Allows site administrators to modify content.
+ */
+
+declare(strict_types = 1);
+
+/**
+ * Implements hook_theme().
+ */
+function harta_theme() {
+  return [
+    'harta' => [
+      'variables' => [
+        'module_path' => null
+      ],
+    ],
+  ];
+}
+

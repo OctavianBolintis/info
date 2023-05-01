@@ -1,0 +1,6 @@
+harta.homepage:
+  path: '/harta-interactiva-romania'
+  defaults:
+    _controller: '\Drupal\harta\Controller\PageController::HomeAction'
+  requirements:
+    _permission: 'access content'
